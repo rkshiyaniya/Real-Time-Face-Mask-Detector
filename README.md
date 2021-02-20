@@ -12,6 +12,11 @@ Real Time Mask Detector with Keras, OpenCV. By detecting Face then Classify whet
 * Matplotlib
 * sklearn
 
+# Note
+
+* The dataset used can be downloaded here - [Click to Download](https://drive.google.com/drive/folders/1XDte2DL2Mf_hw4NsmGst7QtYoU7sMBVG?usp=sharing)
+* Caffe-based Face Detector because it's more accurate and fast
+
 # About Project
 
 * First Load Data and Pre-process it
