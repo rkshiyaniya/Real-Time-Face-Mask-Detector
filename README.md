@@ -1,6 +1,6 @@
-# Real Time Mask Detector using Deep Learning ( Keras )
+# Real Time Face Mask Detector using Deep Learning ( Keras )
 
-Real Time Mask Detector with Keras, OpenCV. By detecting Face then Classify whether person wearing Mask or Not.
+Real Time Face Mask Detector with Keras, OpenCV. By detecting Face then Classify whether person wearing Mask or Not.
 
 # Requirements
 
