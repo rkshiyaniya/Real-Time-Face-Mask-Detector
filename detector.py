@@ -86,7 +86,7 @@ cap = cv2.VideoCapture(0)
 # loop over the frames from the video stream
 while True:
     # grab the frame and resize it
-    # to have a maximum width of 500 pixels
+    # to have a maximum width of 500 pixels or whatever you want
     ret, frame = cap.read()
     frame = cv2.flip(frame, 1)
     frame = imutils.resize(frame, width=500)
