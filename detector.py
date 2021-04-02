@@ -3,12 +3,9 @@
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
-from imutils.video import VideoStream
 import numpy as np
 import imutils
-import time
 import cv2
-import os
 
 # Load our Serialized Face Detector Model
 
@@ -19,14 +16,18 @@ faceNet = cv2.dnn.readNet(prototxtPath, weightsPath)
 # Load Our Serialized Mask Detector Model from disk
 maskNet = load_model("mask_detector.model")
 
+print("[INFO] model loaded successfully...")
+
 
 def detect_and_predict_mask(frame, faceNet, maskNet):
     # grab the dimensions of the frame and then construct a blob from it
     (h, w) = frame.shape[:2]
     blob = cv2.dnn.blobFromImage(frame, 1.0, (224, 224),
                                  (104.0, 177.0, 123.0))
-    # R mean = 104, G mean = 177, B mean = 123
+    # As we know mean of each Colors, Red = 104, Green = 177, Blue = 123
     # blob = cv2.dnn.blobFromImage(image, scalefactor=1.0, size, mean, swapRB=True)
+    # To know more about blob,
+    # https://www.pyimagesearch.com/2017/11/06/deep-learning-opencvs-blobfromimage-works/
 
     # pass the blob through the network and obtain the face detections
     faceNet.setInput(blob)
@@ -80,14 +81,15 @@ def detect_and_predict_mask(frame, faceNet, maskNet):
 
 
 print("[INFO] starting video stream...")
-vs = VideoStream(src=0).start()
+cap = cv2.VideoCapture(0)
 
 # loop over the frames from the video stream
 while True:
-    # grab the frame from the threaded video stream and resize it
-    # to have a maximum width of 400 pixels
-    frame = vs.read()
-    frame = imutils.resize(frame, width=400)
+    # grab the frame and resize it
+    # to have a maximum width of 500 pixels
+    ret, frame = cap.read()
+    frame = cv2.flip(frame, 1)
+    frame = imutils.resize(frame, width=500)
 
     # detect faces in the frame and determine if they are wearing a face mask or not
     (locs, preds) = detect_and_predict_mask(frame, faceNet, maskNet)
@@ -112,12 +114,12 @@ while True:
         cv2.rectangle(frame, (startX, startY), (endX, endY), color, 2)
 
     # show the output frame
-    cv2.imshow("Frame", frame)
+    cv2.imshow("Detecting...", frame)
     key = cv2.waitKey(1) & 0xFF
 
     # if the `q` key was pressed, break from the loop
     if key == ord("q"):
         break
 
+cap.release()
 cv2.destroyAllWindows()
-vs.stop()
