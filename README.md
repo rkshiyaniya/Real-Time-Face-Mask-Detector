@@ -1,9 +1,6 @@
 # Real Time Face Mask Detector using Deep Learning ( Keras )
 
-Real Time Face Mask Detector with Keras, OpenCV. By Caffe model detecting Face then Classify whether person wearing Mask or Not based on trained model on base of mobilenet_v2 model with pre-trained weights of 'imagenet'.
-
-# About Project
-
+Real Time Face Mask Detector with TensorFlow/Keras with the help of OpenCV. By Caffe model detecting Face then Classify whether person wearing Mask or Not based on trained model on base of mobilenet_v2 model with pre-trained weights of 'imagenet'.
 
 # Requirements
 
@@ -33,7 +30,7 @@ Real Time Face Mask Detector with Keras, OpenCV. By Caffe model detecting Face t
 
 * Then our trained serialized 'mask_detector.model' detect whether person wearing mask or not
 
-* Then show it as label to make real-time by OpenCV
+* Then rest of the work will be done by OpenCV as to label prediction and show live
 
 # Screenshots
 
