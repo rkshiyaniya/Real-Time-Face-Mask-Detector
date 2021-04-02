@@ -42,3 +42,6 @@ Real Time Face Mask Detector with TensorFlow/Keras with the help of OpenCV. By C
 
 ![WithoutMask](ss/without_mask.jpg?raw=true)
 
+## Accuracy Plot
+
+![acc](plot.png?raw=true)
